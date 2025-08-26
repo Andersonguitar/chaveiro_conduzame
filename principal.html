@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento Especial</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            text-align: center;
+            background-image: url('chamada.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        header, section, footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        header { 
+            background-color: rgba(233, 185, 90, 0.8);
+            font-size: 24px;
+        }
+
+        section { 
+            background-color: rgba(51, 51, 51, 0.6);
+        }
+
+        footer { 
+            background-color: rgba(51, 51, 51, 0.8);
+            padding: 10px; 
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 10px; /* Adicionado padding para evitar que o conteúdo grude nas bordas */
+        }
+
+        .btn { 
+            background-color: #e9b95a;
+            color: white; 
+            padding: 12px 25px; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            display: inline-block; 
+            margin: 10px;
+            font-weight: bold;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #d1a44c;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .insta-link {
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .insta-link img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .insta-link img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Regras de responsividade para telas menores */
+        @media (max-width: 600px) {
+            body {
+                background-size: auto 100vh; /* Ajusta a imagem de fundo para preencher a altura da tela */
+            }
+            .container {
+                margin: 10px auto;
+            }
+            header h1 {
+                font-size: 1.5em;
+            }
+            section h2 {
+                font-size: 1.2em;
+            }
+            .btn {
+                display: block; /* Cada botão ocupa uma linha inteira em telas pequenas */
+                margin: 10px auto;
+                width: 80%;
+            }
+            .insta-link img {
+                width: 40px; /* Reduz o tamanho do ícone do Instagram */
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="audio-tema" src="tema.mp3" autoplay></audio>
+
+    <div class="container">
+        <header>
+            <h1>Seminário de Dança - Uma dança um propósito</h1>
+        </header>
+
+        <section>
+            <h2>Realizado</h2>
+            <p>📅 Data: 20 de Setembro de 2025</p>
+            <p>⏰ Horário: 14:30h</p>
+            <p>📍 Local: Rua Mauro Soeiro Banhos nº73 Bairro Planalto, Linhares</p>
+        </section>
+        
+        <section>
+            <h2>Galeria e Conteúdo</h2>
+            <a href="#" id="btn-fotos" class="btn">Álbum de Fotos</a>
+            <a href="historia.html" class="btn">História do Ministério</a>
+        </section>
+        
+        <section>
+            <h2>Acesse nossa rede</h2>
+            <a href="https://www.instagram.com/seu-perfil" class="insta-link" target="_blank">
+                <img src="insta.jpg" alt="Instagram">
+            </a>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Evento Especial - Seminário de dança IBNAP</p>
+    </footer>
+
+    <script>
+        const googleDriveLink = "https://link-do-seu-google-drive"; 
+
+        const btnFotos = document.getElementById('btn-fotos');
+        btnFotos.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (googleDriveLink.includes("link-do-seu-google-drive")) {
+                alert("Ainda não constam fotos.");
+            } else {
+                window.open(googleDriveLink, '_blank');
+            }
+        });
+    </script>
+
+</body>
+</html>

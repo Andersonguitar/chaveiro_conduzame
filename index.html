@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            background-image: url('chamada.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            background-repeat: no-repeat;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            padding: 40px;
+            background-color: rgba(3, 3, 3, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            backdrop-filter: blur(5px);
+        }
+        .container h1 {
+            font-size: 2em;
+        }
+        .flame-animation {
+            margin-bottom: 20px;
+        }
+        .flame-animation img {
+            width: 120px; /* Aumentei o tamanho da chama para desktop */
+            height: auto;
+        }
+        .btn-acessar {
+            background-color: #e9b95a;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .btn-acessar:hover {
+            background-color: #d1a44c;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            .container h1 {
+                font-size: 1.5em;
+            }
+            .btn-acessar {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+            .flame-animation img {
+                width: 90px; /* Aumentei o tamanho da chama em telas menores */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flame-animation">
+            <img src="chama.gif" alt="Animação de uma chama">
+        </div>
+        <h1>Seminário uma Dança um propósito!</h1>
+        <p>Clique no botão abaixo para acessar o site do evento.</p>
+        <a href="principal.html" class="btn-acessar">Clique aqui e acesse a página</a>
+    </div>
+</body>
+</html>
