@@ -3,24 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo!</title>
+    <title>Seminário de Dança</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        body, html {
             margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        /* Container principal com rolagem horizontal oculta */
+        .page-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden; /* Bloqueia a rolagem horizontal manual */
+            scroll-behavior: smooth;
+        }
+
+        /* Esconde a barra de rolagem em diferentes navegadores */
+        .page-container::-webkit-scrollbar {
+            display: none; /* Para WebKit (Chrome, Safari, etc.) */
+        }
+        .page-container {
+            -ms-overflow-style: none; /* Para Edge */
+            scrollbar-width: none; /* Para Firefox */
+        }
+
+        /* Estilo de cada página (tela) */
+        .page {
+            flex: none;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Alinha o conteúdo ao topo para permitir rolagem vertical */
+            align-items: center;
             text-align: center;
+            position: relative;
+            box-sizing: border-box; /* Garante que padding não aumente o tamanho */
+            overflow-y: auto; /* PERMITE ROLAGEM VERTICAL DENTRO DA PÁGINA */
+            -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
+        }
+
+        /* Esconde a barra de rolagem VERTICAL interna */
+        .page::-webkit-scrollbar {
+            display: none;
+        }
+        .page {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+
+        /* Estilos da primeira página (tela inicial) */
+        #welcome-page {
             background-image: url('chamada.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: #fff;
+            backdrop-filter: blur(5px);
             background-repeat: no-repeat;
-            padding: 20px;
-            box-sizing: border-box;
+            justify-content: center; /* Centraliza verticalmente o conteúdo da página de boas-vindas */
+            padding: 20px; /* Padding para a página de boas-vindas */
         }
         .container {
             padding: 40px;
@@ -30,18 +77,15 @@
             max-width: 90%;
             backdrop-filter: blur(5px);
         }
-        .container h1 {
-            font-size: 2em;
-        }
         .ministerio-icon {
             margin-bottom: 20px;
         }
         .ministerio-icon img {
-            width: 150px; /* Tamanho do ícone para desktop */
+            width: 150px;
             height: auto;
-            border-radius: 50%; /* Deixa a imagem circular */
-            border: 5px solid #e9b95a; /* Borda dourada */
-            box-shadow: 0 0 15px rgba(233, 185, 90, 0.7); /* Efeito de brilho */
+            border-radius: 50%;
+            border: 5px solid #e9b95a;
+            box-shadow: 0 0 15px rgba(233, 185, 90, 0.7);
         }
         .btn-acessar {
             background-color: #e9b95a;
@@ -52,14 +96,85 @@
             font-size: 1.2em;
             font-weight: bold;
             transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
         .btn-acessar:hover {
             background-color: #d1a44c;
         }
+        
+        /* Estilos da segunda página (principal) */
+        #main-page {
+            background-image: url('chamada.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            box-sizing: border-box;
+            padding: 40px 20px; /* Aumenta o padding vertical para espaço extra */
+            align-items: center; /* Centraliza o conteúdo horizontalmente */
+            justify-content: flex-start; /* Alinha ao topo para rolagem */
+        }
+        #main-page header, 
+        #main-page section, 
+        #main-page footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            margin-bottom: 20px; /* Mantém espaço entre os blocos */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            max-width: 600px; /* Limita a largura dos blocos de conteúdo para telas maiores */
+            width: 100%; /* Garante que ocupem a largura disponível */
+            /* margin-left: auto; e margin-right: auto; não são necessários se #main-page tiver align-items: center */
+        }
+        #main-page footer {
+            margin-bottom: 0; /* Remove margin-bottom do footer */
+        }
+        #main-page header { 
+            background-color: rgba(233, 185, 90, 0.8);
+            font-size: 24px;
+        }
+        .btn { 
+            background-color: #e9b95a;
+            color: white; 
+            padding: 12px 25px; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            display: inline-block; 
+            margin: 10px;
+            font-weight: bold;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+        .btn:hover {
+            background-color: #d1a44c;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .insta-link {
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .insta-link img {
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+            transition: transform 0.2s ease-in-out;
+        }
+        .insta-link img:hover {
+            transform: scale(1.1);
+        }
+        audio {
+            display: none;
+        }
 
+        /* Responsividade */
         @media (max-width: 600px) {
+            #welcome-page {
+                padding: 15px;
+            }
             .container {
-                padding: 20px;
+                padding: 15px; /* Reduz o padding do container em telas menores */
             }
             .container h1 {
                 font-size: 1.5em;
@@ -69,19 +184,105 @@
                 font-size: 1em;
             }
             .ministerio-icon img {
-                width: 120px; /* Tamanho do ícone em telas menores */
+                width: 100px; /* Reduz o tamanho do ícone */
+            }
+            
+            #main-page {
+                padding: 20px 10px; /* Ajusta o padding da main-page em telas menores */
+            }
+            #main-page header, 
+            #main-page section, 
+            #main-page footer {
+                padding: 15px; /* Reduz o padding dos blocos de conteúdo */
+                margin-bottom: 15px;
+                max-width: 100%; /* Garante que ocupe quase toda a largura em telas pequenas */
+                width: calc(100% - 20px); /* Ajusta largura para considerar padding da main-page */
+            }
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 90%; /* Aumenta a largura dos botões */
+            }
+            .insta-link img {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="ministerio-icon">
-            <img src="icone.jpeg" alt="Ícone do Ministério Conduza-me">
+
+    <div class="page-container">
+
+        <div id="welcome-page" class="page">
+            <div class="container">
+                <div class="ministerio-icon">
+                    <img src="icone.jpeg" alt="Ícone do Ministério Conduza-me">
+                </div>
+                <h1>Bem-vindo ao Seminário de Dança!</h1>
+                <p>Clique no botão abaixo para acessar o site do evento.</p>
+                <button id="acessar-btn" class="btn-acessar">Clique aqui e acesse a página</button>
+            </div>
         </div>
-        <h1>Bem-vindo ao Seminário de Dança!</h1>
-        <p>Clique no botão abaixo para acessar o site do evento.</p>
-        <a href="principal.html" class="btn-acessar">Clique aqui e acesse a página</a>
+
+        <div id="main-page" class="page">
+            <header>
+                <h1>Seminário de Dança - Uma dança um propósito</h1>
+            </header>
+            <div class="audio-controls">
+                <audio id="audio-tema" src="tema.mp3" loop></audio>
+            </div>
+            <section>
+                <h2>Realizado</h2>
+                <p>📅 Data: 20 de Setembro de 2025</p>
+                <p>⏰ Horário: 14:30h</p>
+                <p>📍 Local: Rua Mauro Soeiro Banhos nº73 Bairro Planalto, Linhares</p>
+            </section>
+            <section>
+                <h2>Galeria e Conteúdo</h2>
+                <a href="#" id="btn-fotos" class="btn">Álbum de Fotos</a>
+                <a href="historia.html" class="btn">História do Ministério</a>
+            </section>
+            <section>
+                <h2>Acesse nossa rede</h2>
+                <a href="https://www.instagram.com/ministerioconduzame?igsh=eWdxNTNucm40OTNk" class="insta-link" target="_blank">
+                    <img src="insta.jpg" alt="Instagram">
+                </a>
+            </section>
+            <footer>
+                <p>&copy; 2025 Evento Especial - Seminário de dança IBNAP</p>
+            </footer>
+        </div>
     </div>
+
+    <script>
+        const acessarBtn = document.getElementById('acessar-btn');
+        const pageContainer = document.querySelector('.page-container');
+        const audio = document.getElementById('audio-tema');
+        
+        acessarBtn.addEventListener('click', () => {
+            audio.volume = 0.5; // Ajusta o volume
+            
+            // Toca o áudio e, se funcionar, rola a página
+            audio.play().catch(error => {
+                console.error("Erro ao tentar tocar o áudio:", error);
+            }).finally(() => {
+                // Rola para a próxima página após a tentativa de reprodução
+                pageContainer.scrollLeft = pageContainer.offsetWidth;
+            });
+        });
+
+        // Configura o link do álbum de fotos
+        const googleDriveLink = "https://link-do-seu-google-drive"; 
+        const btnFotos = document.getElementById('btn-fotos');
+        btnFotos.addEventListener('click', function(event) {
+            event.preventDefault();
+            if (googleDriveLink.includes("link-do-seu-google-drive")) {
+                alert("Ainda não constam fotos.");
+            } else {
+                window.open(googleDriveLink, '_blank');
+            }
+        });
+    </script>
 </body>
 </html>
