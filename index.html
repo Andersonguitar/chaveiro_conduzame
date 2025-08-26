@@ -24,7 +24,7 @@
         }
         .container {
             padding: 40px;
-            background-color: rgba(3, 3, 3, 0.7);
+            background-color: rgba(51, 51, 51, 0.7);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             max-width: 90%;
@@ -33,12 +33,15 @@
         .container h1 {
             font-size: 2em;
         }
-        .flame-animation {
+        .ministerio-icon {
             margin-bottom: 20px;
         }
-        .flame-animation img {
-            width: 120px; /* Aumentei o tamanho da chama para desktop */
+        .ministerio-icon img {
+            width: 150px; /* Tamanho do ícone para desktop */
             height: auto;
+            border-radius: 50%; /* Deixa a imagem circular */
+            border: 5px solid #e9b95a; /* Borda dourada */
+            box-shadow: 0 0 15px rgba(233, 185, 90, 0.7); /* Efeito de brilho */
         }
         .btn-acessar {
             background-color: #e9b95a;
@@ -65,18 +68,18 @@
                 padding: 12px 25px;
                 font-size: 1em;
             }
-            .flame-animation img {
-                width: 90px; /* Aumentei o tamanho da chama em telas menores */
+            .ministerio-icon img {
+                width: 120px; /* Tamanho do ícone em telas menores */
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="flame-animation">
-            <img src="chama.gif" alt="Animação de uma chama">
+        <div class="ministerio-icon">
+            <img src="icone.jpeg" alt="Ícone do Ministério Conduza-me">
         </div>
-        <h1>Seminário uma Dança um propósito!</h1>
+        <h1>Bem-vindo ao Seminário de Dança!</h1>
         <p>Clique no botão abaixo para acessar o site do evento.</p>
         <a href="principal.html" class="btn-acessar">Clique aqui e acesse a página</a>
     </div>
